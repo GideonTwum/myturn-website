@@ -20,6 +20,12 @@ export const metadata: Metadata = {
     "Ghana fintech",
     "savings circles",
   ],
+  icons: {
+    icon: [
+      { url: "/images/myturn-logo-icon.png", type: "image/png" },
+    ],
+    apple: "/images/myturn-logo-icon.png",
+  },
   openGraph: {
     title: "MyTurn | Digital Contribution Community",
     description:

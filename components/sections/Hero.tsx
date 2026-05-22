@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Users, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -148,6 +149,24 @@ export function Hero() {
 
           {/* Hero visual / floating cards */}
           <div className="relative hidden lg:block h-[500px]">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: [0.15, 0.25, 0.15], scale: [0.95, 1, 0.95] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+              className="absolute inset-0 flex items-center justify-center pointer-events-none"
+            >
+              <div className="relative">
+                <div className="absolute inset-0 scale-[2.5] rounded-full bg-emerald-400/20 blur-3xl" />
+                <Image
+                  src="/images/myturn-logo-icon.png"
+                  alt="MyTurn Logo"
+                  width={888}
+                  height={888}
+                  unoptimized
+                  className="relative h-40 w-40 rounded-full opacity-20 object-contain"
+                />
+              </div>
+            </motion.div>
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}

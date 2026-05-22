@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/constants/navigation";
 import { Button } from "@/components/ui/Button";
+import { MyTurnLogo } from "@/components/ui/MyTurnLogo";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
@@ -46,22 +47,28 @@ export function Navbar() {
               e.preventDefault();
               handleNavClick("#home");
             }}
-            className="flex items-center gap-2 group"
+            className="flex items-center shrink-0"
+            aria-label="MyTurn home"
           >
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-green-700 flex items-center justify-center shadow-lg shadow-emerald-500/30"
+              transition={{ duration: 0.2 }}
+              className="hidden sm:block"
             >
-              <Sparkles className="w-5 h-5 text-amber-300" />
+              <MyTurnLogo
+                variant="wordmark"
+                size="md"
+                textTheme={scrolled ? "dark" : "light"}
+                priority
+              />
             </motion.div>
-            <span
-              className={cn(
-                "text-xl font-bold tracking-tight",
-                scrolled ? "text-emerald-900" : "text-white"
-              )}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+              className="sm:hidden"
             >
-              My<span className={scrolled ? "text-amber-500" : "text-amber-400"}>Turn</span>
-            </span>
+              <MyTurnLogo variant="icon" size="md" priority />
+            </motion.div>
           </a>
 
           <motion.div
@@ -118,6 +125,13 @@ export function Navbar() {
             className="lg:hidden bg-white/95 backdrop-blur-xl border-t border-emerald-100 overflow-hidden"
           >
             <div className="px-4 py-6 flex flex-col gap-4">
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex justify-center pb-4 mb-2 border-b border-emerald-100"
+              >
+                <MyTurnLogo variant="wordmark" size="lg" textTheme="dark" />
+              </motion.div>
               {NAV_LINKS.map((link, i) => (
                 <motion.a
                   key={link.href}

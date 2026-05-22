@@ -1,7 +1,7 @@
 "use client";
 
-import { Sparkles } from "lucide-react";
 import { FOOTER_LINKS } from "@/constants/navigation";
+import { MyTurnLogo } from "@/components/ui/MyTurnLogo";
 
 export function Footer() {
   const scrollTo = (href: string) => {
@@ -20,14 +20,10 @@ export function Footer() {
                 e.preventDefault();
                 scrollTo("#home");
               }}
-              className="flex items-center gap-2 mb-4"
+              className="inline-flex mb-4 transition-opacity hover:opacity-90"
+              aria-label="MyTurn home"
             >
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center">
-                <Sparkles className="w-5 h-5 text-amber-300" />
-              </div>
-              <span className="text-xl font-bold text-white">
-                My<span className="text-amber-400">Turn</span>
-              </span>
+              <MyTurnLogo variant="wordmark" size="lg" textTheme="light" />
             </a>
             <p className="text-emerald-200/80 text-sm leading-relaxed max-w-sm mb-6">
               Your trusted digital contribution community. Save together, grow financially, and
